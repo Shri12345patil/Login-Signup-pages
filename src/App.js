@@ -17,18 +17,16 @@ function App() {
   const setModalIsOpenToTrue1 =()=>{
       setModalIsOpen1(true)
   }
-
   const setModalIsOpenToFalse1 =()=>{
       setModalIsOpen1(false)
   }
 
   const setModalIsOpenToTrue2 =()=>{
     setModalIsOpen2(true)
-}
-
-const setModalIsOpenToFalse2 =()=>{
+  }
+  const setModalIsOpenToFalse2 =()=>{
     setModalIsOpen2(false)
-}
+  }
 
   const customStyles = {
     content : {
