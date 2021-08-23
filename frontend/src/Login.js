@@ -7,7 +7,7 @@ function Login (props) {
     const [loading, setLoading] = useState(false);
 
     const handleLogin = () => {
-        props.history.push('/dashboard');
+        props.history.push('/App');
       }
 
         return (
@@ -15,11 +15,11 @@ function Login (props) {
             Login<br /> <hr/>
             <div>
               Username &nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="text" {...username} autoComplete="new-password" />&nbsp;&nbsp;
+              <input type="text" {...username} autoComplete="new-password" placeholder="enter Username" />&nbsp;&nbsp;
             </div>
             <div style={{ marginTop: 10 }}>
               Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="password" {...password} autoComplete="new-password" />
+              <input type="password" {...password} autoComplete="new-password" placeholder="enter Password" />
             </div>
             {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
             <input type="button" value={loading ? 'Loading... ' : 'Login'} onClick={handleLogin} disabled={loading} /><br />

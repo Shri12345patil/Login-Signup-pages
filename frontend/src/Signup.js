@@ -1,44 +1,45 @@
 import React, { useState } from 'react'
+import APIService from './APIService'
 
-function Login (props) {
-    const username = useFormInput('');
-    const password = useFormInput('');
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
+function Signup (props) {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
-    const handleLogin = () => {
-        props.history.push('/dashboard');
-      }
+  const insertStudent = () => {
+    APIService.InsertStudent({username,password})
+    .then(resp=> props.insertedStudent(resp))
+    .catch(error => console.log(error))
+    alert("User created..!");
+}
+
+
 
         return (
+          <form>
             <div>
-            SignUp<br /> <hr/>
-            <div>
-              Username &nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="text" {...username} autoComplete="new-password" />&nbsp;&nbsp;
-            </div>
-            <div style={{ marginTop: 10 }}>
-              Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="password" {...password} autoComplete="new-password" />
-            </div>
-            {error && <><small style={{ color: 'red' }}>{error}</small><br /></>}<br />
-            <input type="button" value={loading ? 'Loading... ' : 'Create'} onClick={handleLogin} disabled={loading} /><br />
+              <label>SignUp</label><br /> <hr/>
+              <div>
+                <lable>Username</lable> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" 
+                        name="username" 
+                        placeholder="enter Username" 
+                        autoComplete="off"
+                        value={username}
+                        onChange= {(e) => setUsername(e.target.value)} />&nbsp;&nbsp;
+              </div>
+              <div style={{ marginTop: 10 }}>
+                <label>Password</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="password" 
+                        name="password" 
+                        placeholder="Enter password" 
+                        autoComplete="off"
+                        value={password}
+                        onChange= {(e) => setPassword(e.target.value)} />
+              </div><br/>
+            <input type="button" value='Create' onClick={() => {insertStudent();}} /><br />
           </div>     
-            
+           </form> 
         );
 
 }
-
-const useFormInput = initialValue => {
-    const [value, setValue] = useState(initialValue);
-   
-    const handleChange = e => {
-      setValue(e.target.value);
-    }
-    return {
-      value,
-      onChange: handleChange
-    }
-  }
-
-export default Login
+export default Signup

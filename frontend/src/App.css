@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background-color:purple;
+  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,8 +13,8 @@
   color: rgb(32, 29, 29);
 }
 
-h2{
-  color: black;
+h2,h5{
+  color:white;
   padding-bottom: 6%;
 }
 

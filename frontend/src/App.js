@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Modal from 'react-modal';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -36,14 +36,27 @@ function App() {
       bottom                : 'auto',
       marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)',
-      backgroundColor       : 'purple'      
+      backgroundColor       : 'LightSlateGray'      
     }
 };
+
+const[students, setStudents] = useState([])
+const[editedStudent, setEditedStudent] = useState(null)
+
+const openForm = () => {
+  setEditedStudent({username:'',password:''})
+}
+
+
+const insertedStudent = (student)=> {
+  const new_students = [...students,student]
+  setStudents(new_students)
+}
 
   return (
     <div className="App">
       <header className="App-header">
-        <h2 className="h2">Task 1</h2>
+        <h2 className="h2">Login and Signup page (Flask + React.js)</h2>
       <ButtonGroup onClick={handleClick}>
         <Button variant="success" value="Login" onClick={setModalIsOpenToTrue1}>Login</Button>
 
@@ -54,9 +67,9 @@ function App() {
 
         <Button variant="danger" value="SignUp" onClick={setModalIsOpenToTrue2}>Sign-Up</Button>
 
-        <Modal isOpen={modalIsOpen2} style={customStyles} onRequestClose={()=> setModalIsOpen2(false)}  ariaHideApp={false}>
+        <Modal isOpen={modalIsOpen2} style={customStyles} onRequestClose={()=> setModalIsOpen2(false)} ariaHideApp={false}>
                   <button className="close-icon" onClick={setModalIsOpenToFalse2}>x</button>
-                  <Signup/>
+                  <Signup student = {editedStudent} insertedStudent = {insertedStudent} /> 
         </Modal>
       </ButtonGroup>
       </header>
