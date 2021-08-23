@@ -14,19 +14,11 @@ function App() {
   const [modalIsOpen1,setModalIsOpen1] = useState(false);
   const [modalIsOpen2,setModalIsOpen2] = useState(false);
 
-  const setModalIsOpenToTrue1 =()=>{
-      setModalIsOpen1(true)
-  }
-  const setModalIsOpenToFalse1 =()=>{
-      setModalIsOpen1(false)
-  }
+  const setModalIsOpenToTrue1 =()=>{setModalIsOpen1(true) }
+  const setModalIsOpenToFalse1 =()=>{setModalIsOpen1(false)}
 
-  const setModalIsOpenToTrue2 =()=>{
-    setModalIsOpen2(true)
-  }
-  const setModalIsOpenToFalse2 =()=>{
-    setModalIsOpen2(false)
-  }
+  const setModalIsOpenToTrue2 =()=>{setModalIsOpen2(true)}
+  const setModalIsOpenToFalse2 =()=>{setModalIsOpen2(false) }
 
   const customStyles = {
     content : {

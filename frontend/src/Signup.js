@@ -10,12 +10,9 @@ function Signup (props) {
     .then(resp=> props.insertedStudent(resp))
     .catch(error => console.log(error))
     alert("User created..!");
+    window.open("http://localhost:3000/","_self");
 }
-
-
-
-        return (
-          <form>
+ return (
             <div>
               <label>SignUp</label><br /> <hr/>
               <div>
@@ -37,8 +34,7 @@ function Signup (props) {
                         onChange= {(e) => setPassword(e.target.value)} />
               </div><br/>
             <input type="button" value='Create' onClick={() => {insertStudent();}} /><br />
-          </div>     
-           </form> 
+          </div> 
         );
 
 }
