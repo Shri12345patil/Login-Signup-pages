@@ -75,5 +75,16 @@ def student_delete(id):
     return student_schema.jsonify(student)
 
 
+@app.route('/sign_in', methods=[ "POST"])
+def sign_in():
+    username_entered =  request.json['username']
+    password_entered = request.json['password']
+
+    user = Students.query.filter(Students.username == username_entered).first()
+    if user and user.password == password_entered:
+        return jsonify({'signed_in': "Login successfully !"})
+    return jsonify({'signed_in': "Invalid username , password!"})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
