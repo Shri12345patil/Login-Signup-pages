@@ -5,12 +5,17 @@ function Login (props) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const insertStudent = () => {
-    APIService.InsertStudent({username,password})
-    .then(resp=> props.insertedStudent(resp))
-    .catch(error => console.log(error))
-    alert("User created..!");
+  const loginStudent = () => {
+    APIService.LoginStudent({username,password})
+    .then(resp=> {if(resp.signed_in == "True")
+  {
+    alert("login sucessful..!");
     window.open("http://localhost:3000/","_self");
+  }
+  else{
+    alert(" invalid Username and password...");
+  }})
+    .catch(error => console.log(error))
 }
  return (
             <div>
@@ -33,7 +38,7 @@ function Login (props) {
                         value={password}
                         onChange= {(e) => setPassword(e.target.value)} />
               </div><br/>
-            <input type="button" value='Login' onClick={() => {insertStudent();}} /><br />
+            <input type="button" value='Login' onClick={() => {loginStudent();}} /><br />
           </div> 
         );
 
