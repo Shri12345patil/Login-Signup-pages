@@ -69,4 +69,4 @@ const insertedStudent = (student)=> {
   );
 }
 
-export default App;
+ export default App;

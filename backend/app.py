@@ -41,6 +41,7 @@ def get_students():
 @app.route('/get/<id>/', methods = ['GET'])
 def post_details(id):
     student = Students.query.get(id)
+    student_schema = StudentSchema()
     return student_schema.jsonify(student)
 
 
@@ -82,8 +83,8 @@ def sign_in():
 
     user = Students.query.filter(Students.username == username_entered).first()
     if user and user.password == password_entered:
-        return jsonify({'signed_in': "Login successfully !"})
-    return jsonify({'signed_in': "Invalid username , password!"})
+        return jsonify({'signed_in': "True"})
+    return jsonify({'signed_in': "False"})
 
 
 if __name__ == "__main__":

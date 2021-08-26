@@ -1,11 +1,10 @@
-import React from 'react'
-
-function Userdetail () {
+function Userdetail() {
+    return (
+      <div>
+          <h2 className="head">welcome to home</h2>
+          click here<button>submit</button>
+      </div>
+    );
+  }
   
- return (
-           <h1>hello jy</h1>
-             
-        );
-
-}
-export default Userdetail
+export default Userdetail;

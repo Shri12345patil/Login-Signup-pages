@@ -17,6 +17,9 @@ h2,h5{
   color:white;
   padding-bottom: 6%;
 }
+.head{
+  color: black;
+}
 
 .close-icon {
   content: 'x';
