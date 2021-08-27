@@ -83,7 +83,11 @@ def sign_in():
 
     user = Students.query.filter(Students.username == username_entered).first()
     if user and user.password == password_entered:
-        return jsonify({'signed_in': "True"})
+        return jsonify({'signed_in': "True", 
+        "id": user.id,
+        "username": user.username,
+        "password": user.password
+        })
     return jsonify({'signed_in': "False"})
 
 

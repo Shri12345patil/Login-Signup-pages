@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import APIService from './APIService'
 import { useHistory } from "react-router-dom";
+import Userdetail from './Userdetail';
 
 function Login () {
   const [username, setUsername] = useState('')
@@ -9,24 +10,23 @@ function Login () {
 
   const loginStudent = () => {
     APIService.LoginStudent({username,password})
-    .then(resp=> {if(resp.signed_in == "True")
+    .then(resp=> {
+       let response = resp.id;
+      // console.log(response)
+  if(resp.signed_in == "True")
   {
     alert("login sucessful..!");
-    //  window.open("http://localhost:3000/","_self");
-    // window.location = '/App';
-      history.push("/Userdetail");
+      history.push({
+        pathname:"/Userdetail",
+        // search: `id= ${resp.id}`, 
+        state: ` ${response}`
+      });
   }
   else{
     alert(" invalid Username and password...");
   }})
     .catch(error => console.log(error))
 }
-
-// const history = useHistory();
-    
-//     const handleRoute = () =>{ 
-//       history.push("/Userdetail");
-//     }
  return (
             <div>
               <label>Login</label><br /> <hr/>
