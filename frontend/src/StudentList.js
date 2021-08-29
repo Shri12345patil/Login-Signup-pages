@@ -1,7 +1,8 @@
 import React from 'react'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Modal from 'react-modal';
 import Edit from './Edit';
+import { useLocation}  from 'react-router-dom';
 
 function StudentList(props) {
     const[students, setStudents] = useState([])
@@ -39,14 +40,21 @@ function StudentList(props) {
 const editStudent = (student) => {
     setEditedStudent(student)
   }
-let p=44;
+
+  const location = useLocation();
+useEffect(() => {
+  console.log(location.pathname); // result: '/secondpage'
+  // console.log(location.search); // result: '?query=abc'
+  console.log(location.state);
+}, [location]);
+let p= location.state;
 
     return (
         <div>
               {props.students.map(student =>{
                   let my_student=p;
-                  console.log(student);
-                  if(my_student === student.id){
+                  console.log(my_student);
+                  if(my_student == student.id){
                     return(
                         <div key = {student.id}>
                             <h2 className="h2">{student.username}</h2>
