@@ -6,26 +6,17 @@ function Userdetail() {
   const history = useHistory();
   const handleLogout = () => {
     history.push("/");
-  }
-  //finish logout
+  }//finish logout
 // fetch data
 
 const location = useLocation();
 useEffect(() => {
   console.log(location.pathname); // result: '/secondpage'
   // console.log(location.search); // result: '?query=abc'
-  console.log(location.state);
+  let i=location.state;
+  console.log(i);
 }, [location]);
 
-
-const fetchData = () => { 
-  return fetch("http://127.0.0.1:5000/get")
-        .then((response) => response.json())
-        .then((data) => console.log(data));}
-
-
-
-  useEffect(() => {fetchData();}, []);
 
     return (
       <div>
